@@ -1,0 +1,139 @@
+/* Potluck — one stylesheet, system fonts, no downloads.
+   Dark, high-contrast, and fluid from a phone up to a wide monitor. */
+
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --panel-2: #1c2330;
+  --line: #2d3644;
+  --text: #f0f3f6;
+  --muted: #a7b3c2;
+  --accent: #ffd33d;
+  --accent-ink: #1a1400;
+  --good: #3fb950;
+  --bad: #f47067;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; }
+
+.topbar {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  background: var(--panel); position: sticky; top: 0; z-index: 5;
+}
+.brand { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: .2px; }
+.brand:hover { text-decoration: none; color: var(--accent); }
+.tagline { color: var(--muted); font-size: 13px; }
+.topbar nav { margin-left: auto; }
+.topbar nav a { font-weight: 600; }
+
+main { max-width: 1080px; margin: 0 auto; padding: 22px 16px 40px; }
+
+.hero h1 { font-size: 30px; margin: 4px 0 6px; line-height: 1.2; }
+.hero p { color: var(--muted); margin: 0 0 20px; max-width: 62ch; }
+.filter-label { font-weight: 700; color: var(--text); }
+.filter {
+  width: min(420px, 100%); padding: 9px 13px; border-radius: 999px; font-size: 15px;
+  background: var(--panel); color: var(--text); border: 1px solid var(--line);
+}
+.filter:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; display: flex; flex-direction: column; gap: 8px;
+}
+.card:hover { border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.pot { color: var(--accent); font-weight: 800; font-size: 22px; }
+.card-title { font-size: 17px; margin: 0; line-height: 1.35; }
+.card-title a { color: var(--text); }
+.card-meta { color: var(--muted); margin: 0; font-size: 14px; }
+.card-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+
+.chip {
+  display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12.5px;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); white-space: nowrap;
+}
+.chip.time { color: var(--good); border-color: var(--good); font-weight: 700; }
+.chip.fee { color: var(--accent); border-color: var(--accent); font-weight: 700; }
+.chip.closed { color: var(--bad); border-color: var(--bad); }
+
+.crumbs { color: var(--muted); margin: 0 0 14px; }
+.bounty-head h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
+.summary { color: var(--muted); font-size: 17px; max-width: 68ch; }
+
+.stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+.stat {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 10px 16px; min-width: 130px; flex: 1 1 130px;
+}
+.stat-label { display: block; color: var(--muted); font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; }
+.stat-value { display: block; font-size: 21px; font-weight: 800; margin-top: 2px; }
+.stat-value.pot { color: var(--accent); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px 22px; margin: 0 0 8px; }
+.facts dt { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+.facts dd { margin: 2px 0 0; font-weight: 600; }
+
+h2 { font-size: 21px; margin: 28px 0 10px; }
+
+table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+tbody tr:last-child td { border-bottom: none; }
+.strong { font-weight: 800; }
+.rank { font-weight: 800; color: var(--accent); white-space: nowrap; }
+.entry-title { color: var(--muted); }
+
+.who { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+.avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: var(--panel-2); }
+.avatar.big { width: 72px; height: 72px; }
+
+.profile-head { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+.profile-head h1 { margin: 0 0 4px; font-size: 27px; }
+.links { margin: 6px 0 0; }
+
+.solutions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.solution { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.solution a { font-weight: 700; }
+.solution-meta { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+.prose { max-width: 72ch; }
+.prose p { margin: 0 0 10px; }
+.prose ul, .prose ol { margin: 0 0 10px; padding-left: 22px; }
+.prose code { background: var(--panel-2); padding: 1px 5px; border-radius: 5px; font-size: .92em; }
+.prose h3, .prose h4 { margin: 18px 0 6px; }
+
+.button, .more {
+  display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 800;
+  border: none; border-radius: 999px; padding: 10px 20px; font-size: 15px; cursor: pointer;
+}
+.button:hover, .more:hover { text-decoration: none; filter: brightness(1.08); }
+.center { text-align: center; margin: 20px 0; }
+
+.notice { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.notice.error { border-color: var(--bad); }
+
+.foot { border-top: 1px solid var(--line); color: var(--muted); padding: 16px 20px 26px; font-size: 13.5px; }
+.foot p { max-width: 1080px; margin: 0 auto; }
+
+@media (max-width: 560px) {
+  .hero h1 { font-size: 24px; }
+  .bounty-head h1 { font-size: 23px; }
+  th, td { padding: 8px 8px; font-size: 14px; }
+  .entry-title { display: none; }
+  .topbar { padding: 12px 14px; }
+}
